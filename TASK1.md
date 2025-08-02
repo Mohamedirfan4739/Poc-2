@@ -54,6 +54,6 @@ sudo chmod +x /home/studentuser/projectX/scripts/backup.sh
 /home/studentuser/projectX/scripts/backup.sh
 ```
 
-
+![Screenshot](/home/irfan4739l/Pictures/Screenshot_2025-08-02_19_33_10.png)
 
 
