@@ -1,3 +1,4 @@
+#TASK 1
 # Linux Essentials & File Permissions Task
 
 ## 📌 Task Overview
@@ -55,6 +56,8 @@ sudo chmod +x /home/studentuser/projectX/scripts/backup.sh
 ```
 
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/02b9f0b56c90e675283aaf4a985a7eaf62ffe0ec/Screenshot_2025-08-02_19_33_10.png)
-![](https://github.com/Mohamedirfan4739/Poc-2/blob/02b9f0b56c90e675283aaf4a985a7eaf62ffe0ec/Screenshot_2025-08-02_19_33_10.png)
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/02b9f0b56c90e675283aaf4a985a7eaf62ffe0ec/Screenshot_2025-08-02_19_33_10.png)\
+
+#TASK 2
 
 
