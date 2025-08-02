@@ -61,3 +61,52 @@ sudo chmod +x /home/studentuser/projectX/scripts/backup.sh
 # TASK 2
 
 
+# 1️⃣ Create script
+```bash
+nano netinfo.sh
+```
+# 2️⃣  Bash script (netinfo.sh) that gathers network info, lists open ports, pings Google, and resolves OpenAI’s IP, then writes everything to network_report.txt.
+```bash
+#!/bin/bash
+
+# File: netinfo.sh
+
+# 1. Display IP address, subnet mask, and default gateway
+{
+    echo "===== Network Information ====="
+    ip addr show | grep -E 'inet ' | awk '{print "IP Address: " $2}'
+    echo "Default Gateway:"
+    ip route | grep default
+    echo
+
+    # 2. List open ports
+    echo "===== Open Ports ====="
+    if command -v ss &> /dev/null; then
+        ss -tuln
+    else
+        netstat -tuln
+    fi
+    echo
+
+    # 3. Ping google.com
+    echo "===== Ping google.com ====="
+    ping -c 4 google.com
+    echo
+
+    # 4. DNS Lookup for openai.com
+    echo "===== DNS Lookup for openai.com ====="
+    nslookup openai.com
+} > network_report.txt
+
+echo "Network report saved to network_report.txt"
+```
+# 3️⃣ Make it executable
+```
+chmod +x netinfo.sh
+```
+# 4️⃣ Run it
+```
+./netinfo.sh
+```
+4️![](
+
