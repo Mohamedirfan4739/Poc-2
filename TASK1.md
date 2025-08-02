@@ -38,11 +38,10 @@ Paste the following into the file:
 ```bash
 #!/bin/bash
 cp /home/studentuser/projectX/welcome.txt /home/studentuser/projectX/logs/welcome_$(date +%Y%m%d_%H%M%S).txt
-```
     cp → Copies the file.
 
     $(date +%Y%m%d_%H%M%S) → Adds timestamp to filename.
-
+```
 Save & exit:
 Ctrl + O → Save, Enter → Confirm, Ctrl + X → Exit.
 ## 6️⃣ Make Script Executable
