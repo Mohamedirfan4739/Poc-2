@@ -109,4 +109,4 @@ chmod +x netinfo.sh
 ./netinfo.sh
 ```
 4️![](
-
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/50dac2e444241353ddc0aefb7b0f12013a5e3785/Screenshot_2025-08-02_20_54_51.png)
