@@ -114,4 +114,65 @@ chmod +x netinfo.sh
 # TASK 3
 # Mini Server Monitor Script
 
+# 1️⃣ Create script
+```
+nano monitor.sh
+```
+# 2️⃣ Bash script for mini server monitor task.
+```
+#!/bin/bash
+# File: monitor.sh
+# Description: Checks nginx status, shows system metrics, and logs results.
 
+LOGFILE="/var/log/monitor.log"
+TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+
+{
+    echo "===== $TIMESTAMP ====="
+
+    # 1. Check if nginx is running
+    if systemctl is-active --quiet nginx; then
+        echo "[INFO] nginx is running."
+    else
+        echo "[WARN] nginx is NOT running. Attempting to start..."
+        systemctl start nginx
+        if systemctl is-active --quiet nginx; then
+            echo "[SUCCESS] nginx started successfully."
+        else
+            echo "[ERROR] Failed to start nginx."
+        fi
+    fi
+
+    # 2. Display memory usage
+    echo "Memory Usage:"
+    free -h
+
+    # 3. Display CPU load
+    echo "CPU Load:"
+    uptime
+
+    # 4. Display disk usage
+    echo "Disk Usage:"
+    df -h
+
+    echo
+} >> "$LOGFILE" 2>&1
+```
+# 3️⃣ Make it executable
+```
+chmod +x monitor.sh
+```
+# 4️⃣ Ensure log directory exists
+```
+sudo mkdir -p /var/log
+sudo touch /var/log/monitor.log
+sudo chmod 666 /var/log/monitor.log
+```
+# 5️⃣ Schedule it via cron to run every 5 minutes.
+```
+crontab -e
+```
+Add:
+```
+*/5 * * * * /path/to/monitor.sh
+```
