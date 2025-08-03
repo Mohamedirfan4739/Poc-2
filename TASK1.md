@@ -227,4 +227,5 @@ You should see something like this appear in your first terminal:
 ```
 [2025-08-03 09:45:20] New file detected: testfile.txt
 ```
-
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/0497a158f699c0e304fb259b348325f81b4b2791/Screenshot_2025-08-03_09_25_48.png)
+![](
