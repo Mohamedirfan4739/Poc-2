@@ -55,5 +55,78 @@ chmod +x portscan.sh
 ./portscan.sh 192.168.1.10
 ```
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/47bbe5f8bf9baca7c60221bc9880ecf19214d997/Screenshot_2025-08-03_17_23_22.png)
-![](
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/956a276b58240e547663c30771fe1a94e5110a55/Screenshot_2025-08-03_17_22_46.png)
+
+# Task 8: Website Availability Checker
+
+# Step 1 – Create the sites.txt file
+
+This file will contain the websites you want to check.
+```
+nano sites.txt
+```
+Inside, add one website per line:
+```
+https://www.google.com
+https://www.github.com
+https://example.com
+```
+Save and exit:
+
+Press CTRL+O → Enter → CTRL+X.
+
+# Step 2 – Create the script
+
+We’ll make a script file called site_checker.sh.
+```
+nano site_checker.sh
+```
+Paste this script:
+```
+#!/bin/bash
+
+INPUT_FILE="sites.txt"
+LOG_FILE="site_status.log"
+
+# Check if sites.txt exists
+if [ ! -f "$INPUT_FILE" ]; then
+    echo "Error: $INPUT_FILE not found!"
+    exit 1
+fi
+
+# Clear old log file
+> "$LOG_FILE"
+
+# Loop through each site in sites.txt
+while read -r SITE; do
+    if [ -n "$SITE" ]; then
+        STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$SITE")
+        if [ "$STATUS_CODE" -eq 200 ]; then
+            echo "$(date '+%Y-%m-%d %H:%M:%S') - $SITE is UP (Status: $STATUS_CODE)" | tee -a "$LOG_FILE"
+        else
+            echo "$(date '+%Y-%m-%d %H:%M:%S') - $SITE is DOWN (Status: $STATUS_CODE)" | tee -a "$LOG_FILE"
+        fi
+    fi
+done < "$INPUT_FILE"
+
+Save and exit.
+Step 3 – Make the script executable
+```
+Run this command so you can execute it:
+```
+chmod +x site_checker.sh
+```
+# Step 4 – Run the script
+```
+./site_checker.sh
+```
+# Step 5 – Check the results
+
+The results will also appear on the screen.
+
+They will be saved in site_status.log:
+```
+cat site_status.log
+```
+
 
