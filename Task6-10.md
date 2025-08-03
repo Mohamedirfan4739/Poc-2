@@ -197,4 +197,84 @@ They will be saved in site_status.log:
 cat site_status.log
 ```
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/757d369de20f19ffc561d29cecfbcf1456b675a5/Screenshot_2025-08-03_17_36_39.png)
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/b317964abefd93c191d4cad07480285e985f93f8/Screenshot_2025-08-03_17_40_25.png)
+
+# Task 9: Environment and Disk Report
+
+# Step 1 – Create the script file
+
+We’ll call it env_disk_report.sh:
+```
+nano env_disk_report.sh
+```
+# Step 2 – Add the script content
+
+Paste this inside:
+```
+#!/bin/bash
+
+# Report file name with timestamp
+REPORT="env_disk_report_$(date +%F_%H-%M-%S).txt"
+
+# 1. Current user, hostname, and uptime
+echo "===== USER, HOSTNAME & UPTIME =====" >> "$REPORT"
+echo "User: $(whoami)" >> "$REPORT"
+echo "Hostname: $(hostname)" >> "$REPORT"
+echo "Uptime: $(uptime -p)" >> "$REPORT"
+echo "" >> "$REPORT"
+
+# 2. Mounted filesystems and usage
+echo "===== MOUNTED FILESYSTEMS & USAGE =====" >> "$REPORT"
+df -h >> "$REPORT"
+echo "" >> "$REPORT"
+
+# 3. PATH and shell-related environment variables
+echo "===== ENVIRONMENT VARIABLES =====" >> "$REPORT"
+echo "PATH: $PATH" >> "$REPORT"
+echo "Shell: $SHELL" >> "$REPORT"
+echo "Home: $HOME" >> "$REPORT"
+echo "" >> "$REPORT"
+
+# Done message
+echo "Report generated: $REPORT"
+```
+# Step 3 – Save and exit
+
+In nano:
+
+Press CTRL+O → Enter → CTRL+X.
+
+# Step 4 – Make it executable
+```
+chmod +x env_disk_report.sh
+```
+# Step 5 – Run the script
+```
+./env_disk_report.sh
+```
+# Step 6 – View the report
+
+It will create a file like:
+
+env_disk_report_2025-08-03_14-30-00.txt
+
+Check its contents:
+```
+cat env_disk_report_2025-08-03_14-30-00.txt
+```
+Example output:
+
+===== USER, HOSTNAME & UPTIME =====
+User: studentuser
+Hostname: my-computer
+Uptime: up 2 hours, 14 minutes
+
+===== MOUNTED FILESYSTEMS & USAGE =====
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        50G   20G   28G  42% /
+
+===== ENVIRONMENT VARIABLES =====
+PATH: /usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin
+Shell: /bin/bash
+Home: /home/studentuser
 
