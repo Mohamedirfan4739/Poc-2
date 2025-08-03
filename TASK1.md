@@ -276,4 +276,5 @@ chmod +x ssh_audit.sh
 ```
 ./ssh_audit.sh
 ```
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/0b620f02c02066fe61abbc9b242107cc0a79ba7b/Screenshot_2025-08-03_10_00_35.png)
 ![](
