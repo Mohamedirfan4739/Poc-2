@@ -56,7 +56,7 @@ sudo chmod +x /home/studentuser/projectX/scripts/backup.sh
 ```
 
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/02b9f0b56c90e675283aaf4a985a7eaf62ffe0ec/Screenshot_2025-08-02_19_33_10.png)
-![](https://github.com/Mohamedirfan4739/Poc-2/blob/02b9f0b56c90e675283aaf4a985a7eaf62ffe0ec/Screenshot_2025-08-02_19_33_10.png)\
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/02b9f0b56c90e675283aaf4a985a7eaf62ffe0ec/Screenshot_2025-08-02_19_33_10.png)
 
 # TASK 2
 
@@ -110,3 +110,8 @@ chmod +x netinfo.sh
 ```
 4️![](https://github.com/Mohamedirfan4739/Poc-2/blob/29a6591c7c6da14f7f24e1a7f10d482143647479/Screenshot_2025-08-02_20_54_37.png)
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/50dac2e444241353ddc0aefb7b0f12013a5e3785/Screenshot_2025-08-02_20_54_51.png)
+
+# TASK 3
+# Mini Server Monitor Script
+
+
