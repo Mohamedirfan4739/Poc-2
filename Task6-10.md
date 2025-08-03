@@ -20,3 +20,18 @@ Delete .log files older than 7 days every Friday at midnight
 ````
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/2413def1c96d169a186c6dec9bfc5cb5ab299406/Screenshot_2025-08-03_17_10_09.png)
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/0daa07785b20fc8d98218559f1f9d0df7fb18cda/Screenshot_2025-08-03_17_10_01.png)
+
+# Task 7: Port Scanner Script
+
+# 1.Create the script file
+```
+nano portscan.sh
+```
+# 2.Make it executable:
+```
+chmod +x portscan.sh
+```
+# 3.Run it with:
+```
+./portscan.sh 192.168.1.10
+```
