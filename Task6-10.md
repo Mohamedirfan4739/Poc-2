@@ -27,11 +27,31 @@ Delete .log files older than 7 days every Friday at midnight
 ```
 nano portscan.sh
 ```
-# 2.Make it executable:
+# 2.Paste the bash script:
+```
+#!/bin/bash
+
+# Check if IP address is supplied
+if [ -z "$1" ]; then
+    echo "Usage: $0 <IP_ADDRESS>"
+    exit 1
+fi
+
+IP=$1
+
+echo "Scanning ports 20-25 on $IP..."
+for PORT in {20..25}; do
+    timeout 1 bash -c "echo > /dev/tcp/$IP/$PORT" 2>/dev/null &&
+        echo "Port $PORT is OPEN" ||
+        echo "Port $PORT is CLOSED"
+done
+```
+# 3.Make it executable:
 ```
 chmod +x portscan.sh
 ```
-# 3.Run it with:
+# 4.Run it with:
 ```
 ./portscan.sh 192.168.1.10
 ```
+![](
