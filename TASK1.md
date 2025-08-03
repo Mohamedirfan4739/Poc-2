@@ -230,3 +230,50 @@ You should see something like this appear in your first terminal:
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/0497a158f699c0e304fb259b348325f81b4b2791/Screenshot_2025-08-03_09_25_48.png)
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/3254f1b8e3619bb773ffc8e2a56b21238a60bfea/Screenshot_2025-08-03_09_45_42.png)
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/58b8e00b6e6a5393bd6376c2911fc5e79222d4d6/Screenshot_2025-08-03_09_45_52.png)
+
+# Task 5: SSH Login Audit
+
+# 1️⃣ Create script
+```
+nano ssh_audit.sh
+```
+# 2️⃣ Bash script that fulfills Task 5.
+```
+#!/bin/bash
+# File: ssh_audit.sh
+# Description: Shows last 5 successful and failed SSH logins and saves to ssh_audit.txt.
+
+OUTPUT_FILE="ssh_audit.txt"
+
+{
+    echo "===== SSH Login Audit ====="
+    echo "Date: $(date)"
+    echo
+
+    echo "Last 5 Successful Logins:"
+    if [ -f /var/log/auth.log ]; then
+        grep "Accepted" /var/log/auth.log | tail -n 5
+    else
+        journalctl _COMM=sshd | grep "Accepted" | tail -n 5
+    fi
+    echo
+
+    echo "Last 5 Failed Login Attempts:"
+    if [ -f /var/log/auth.log ]; then
+        grep "Failed" /var/log/auth.log | tail -n 5
+    else
+        journalctl _COMM=sshd | grep "Failed" | tail -n 5
+    fi
+} > "$OUTPUT_FILE"
+
+echo "SSH audit results saved to $OUTPUT_FILE"
+```
+# 3️⃣ Make it executable
+```
+chmod +x ssh_audit.sh
+```
+# 4️⃣ Run it
+```
+./ssh_audit.sh
+```
+![](
