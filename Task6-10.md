@@ -55,3 +55,4 @@ chmod +x portscan.sh
 ./portscan.sh 192.168.1.10
 ```
 ![](
+
