@@ -180,3 +180,51 @@ Add:
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/96e8f56ae892fa01eba4fb265ebe6e7438796de8/Screenshot_2025-08-02_21_27_57.png)
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/f854dbf805b5f4401cb6fe179b78f41b85750130/Screenshot_2025-08-02_21_30_05.png)
 
+# Task 4: File Watcher Script
+
+# 1️⃣ Install inotify-tools if not installed
+```
+sudo apt-get install inotify-tools -y
+```
+# 2️⃣ Create the script
+```
+nano watch_dir.sh
+```
+# 3️⃣ Bash script for that will monitor /home/studentuser/projectX/logs for new .txt files and log them with a timestamp.
+```
+#!/bin/bash
+# File: watch_dir.sh
+# Description: Watches for new .txt files and logs their names with timestamps.
+
+WATCH_DIR="/home/studentuser/projectX/logs"
+LOG_FILE="log_monitor.txt"
+
+# Ensure log file exists
+touch "$LOG_FILE"
+
+echo "Watching directory: $WATCH_DIR for new .txt files..."
+inotifywait -m -e create --format '%f' "$WATCH_DIR" | while read NEW_FILE
+do
+    if [[ "$NEW_FILE" == *.txt ]]; then
+        TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+        echo "[$TIMESTAMP] New file detected: $NEW_FILE" | tee -a "$LOG_FILE"
+    fi
+done
+```
+# 4️⃣ Make it executable
+```
+chmod +x watch_dir.sh
+```
+Run the Script:
+```
+./watch_dir.sh
+```
+In another terminal window (while the script keeps running), create a .txt file in the watched directory:
+```
+touch /home/studentuser/projectX/logs/testfile.txt
+```
+You should see something like this appear in your first terminal:
+```
+[2025-08-03 09:45:20] New file detected: testfile.txt
+```
+
