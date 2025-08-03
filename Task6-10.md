@@ -19,3 +19,4 @@ Delete .log files older than 7 days every Friday at midnight
 0 0 * * 5 find /path/to/logs -name "*.log" -type f -mtime +7 -exec rm -f {} \;
 ````
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/2413def1c96d169a186c6dec9bfc5cb5ab299406/Screenshot_2025-08-03_17_10_09.png)
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/0daa07785b20fc8d98218559f1f9d0df7fb18cda/Screenshot_2025-08-03_17_10_01.png)
