@@ -278,3 +278,66 @@ PATH: /usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin
 Shell: /bin/bash
 Home: /home/studentuser
 ![](https://github.com/Mohamedirfan4739/Poc-2/blob/9c7f91c35aa247b31b1a1cac0be94af5dcafb6a0/Screenshot_2025-08-03_17_50_50.png)
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/8bc9cb946c33fb245bfd1c06094821682d1160a4/Screenshot_2025-08-03_17_52_23.png)
+
+# Task 10: Compress & Archive Automation
+
+# Step 1 – Create the script
+
+We’ll name it archive_logs.sh:
+```
+nano archive_logs.sh
+```
+# Step 2 – Add the script content
+
+Paste this:
+```
+#!/bin/bash
+
+# Directories
+LOG_DIR="/home/studentuser/projectX/logs"
+BACKUP_DIR="/home/studentuser/projectX/backup"
+
+# Create backup directory if it doesn't exist
+mkdir -p "$BACKUP_DIR"
+
+# Date for archive name
+DATE=$(date +%F)
+ARCHIVE_NAME="archive_${DATE}.tar.gz"
+
+# Find .log files > 10MB
+FILES=$(find "$LOG_DIR" -type f -name "*.log" -size +10M)
+
+# Check if we found any files
+if [ -z "$FILES" ]; then
+    echo "No .log files over 10MB found in $LOG_DIR."
+    exit 0
+fi
+
+# Compress found files
+tar -czf "$ARCHIVE_NAME" $FILES
+
+# Move archive to backup directory
+mv "$ARCHIVE_NAME" "$BACKUP_DIR/"
+
+echo "Archive created: $BACKUP_DIR/$ARCHIVE_NAME"
+```
+# Step 3 – Save and exit
+
+Press CTRL+O, Enter, CTRL+X.
+
+# Step 4 – Make the script executable
+```
+chmod +x archive_logs.sh
+````
+# Step 5 – Run the script
+```
+./archive_logs.sh
+```
+# Step 6 – Check the backup
+```
+ls -lh /home/studentuser/projectX/backup/
+```
+You should see something like:
+
+archive_2025-08-03.tar.gz
