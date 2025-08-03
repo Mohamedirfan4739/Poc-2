@@ -277,4 +277,4 @@ Filesystem      Size  Used Avail Use% Mounted on
 PATH: /usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin
 Shell: /bin/bash
 Home: /home/studentuser
-
+![](https://github.com/Mohamedirfan4739/Poc-2/blob/9c7f91c35aa247b31b1a1cac0be94af5dcafb6a0/Screenshot_2025-08-03_17_50_50.png)
